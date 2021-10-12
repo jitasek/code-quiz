@@ -4,6 +4,8 @@ link to the deployed app:
 
 This app is a timed coding quiz with multiple-choice questions. It runs in the browser and features dynamically updated HTML and CSS powered by JavaScript. It has a clean, polished, and responsive user interface.
 
+My motivation for this work is to practice working with APIs, using timers and practice my DOM manipulation skills.
+
 User Story
 AS A coding boot camp student I want to take a timed quiz on JavaScript fundamentals that stores high scores SO THAT I can gauge my progress compared to my peers
 
