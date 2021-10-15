@@ -10,11 +10,60 @@
   <body>
     <header>
       <nav class="navbar">
-        <button id="view-highscores">View Highscores</button>
-        <div id="countdown">Time: 0</div>
+        <button class="btn" id="view-highscores">View Highscores</button>
+        <p id="timer">Time: 5</p>
       </nav>
     </header>
-    <main></main>
+
+    <main>
+      <!-- Container for all main content (Start, Questions&Answers, End, Highscores)-->
+      <div class="container">
+        <!-- Section: Start text & h1 -->
+        <section class="section" id="start">
+          <h1>Start Quiz</h1>
+          <p id="intro">
+            Check your coding skills. Answer the following 10 questions
+            correctly and in time. Compare your score to your peers' scores.
+          </p>
+          <button class="btn" id="start-quiz">Start quiz</button>
+        </section>
+
+        <!-- Section: Questions -->
+        <section class="section" id="quiz">
+          <h2 id="question">Is this a question?</h2>
+          <ul>
+            <li><button id="option1" value="0">Option1</button></li>
+            <li><button id="option2" value="1">Option2</button></li>
+            <li><button id="option3" value="2">Option3</button></li>
+            <li><button id="option4" value="3">Option4</button></li>
+          </ul>
+          <div id="corr-wro"></div>
+          <!-- add Correct! / Wrong! in JS file -->
+        </section>
+
+        <!-- Section: Final score & name -->
+        <section class="section" id="end">
+          <h2>All done!</h2>
+          <p>Your final score is: <span id="score">0</span></p>
+          <p>
+            Enter initials:
+            <span><input placeholder="initials" id="initials" /></span>
+            <button id="submit-score" class="btn">Submit</button>
+          </p>
+        </section>
+
+        <!-- Section: Highscores -->
+        <section class="section" id="highscores">
+          <h2>High Scores</h2>
+          <ol id="score-list">
+            <!-- <li></li> -->
+          </ol>
+          <button id="goback" class="btn">Go back</button>
+          <button id="clearscores" class="btn">Clear scores</button>
+        </section>
+        <!-- End of container-->
+      </div>
+    </main>
 
     <!-- Links to JavaScript files -->
     <script src="./assets/js/script.js"></script>
