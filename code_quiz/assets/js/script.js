@@ -28,28 +28,6 @@ var goBackBtn = document.querySelector("#goback");
 var clearScoresBtn = document.querySelector("#clearscores");
 
 console.log(questions);
-// var questions = [
-//   {
-//     question: "What is the text of Question 1?",
-//     options: ["1. text1", "2. text2", "3. text3", "4. text4"],
-//     correctAnswer: "1",
-//   },
-//   {
-//     question: "What is the text of Question 2?",
-//     options: ["1. text1", "2. text2", "3. text3", "4. text4"],
-//     correctAnswer: "2",
-//   },
-//   {
-//     question: "What is the text of Question 3?",
-//     options: ["1. text1", "2. text2", "3. text3", "4. text4"],
-//     correctAnswer: "3",
-//   },
-//   {
-//     question: "What is the text of Question 4?",
-//     options: ["1. text1", "2. text2", "3. text3", "4. text4"],
-//     correctAnswer: "4",
-//   },
-// ];
 
 // Functions, eventListeners:
 quizEl.style.display = "none";
@@ -73,7 +51,7 @@ startCountDown = function () {
       timerEl.textContent = "Time: 0"; // reset the timer element
       quizEl.getElementsByClassName.display = "none"; // questions section disappears
       endEl.style.display = "block";
-      // scoreEl.textContent = countDown; // or count?
+      scoreEl.textContent = count;
     }
   }, 1000);
 };
@@ -184,10 +162,10 @@ function storeScores() {
 
 // Function: retrieving stored scores from localStorage
 function displayScores() {
-  var storedScoredList = JSON.parse(localStorage.getItem("scoreList"));
+  var storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
 
-  if (storedScoredList !== null) {
-    scoreListEl = storedScoredList;
+  if (storedScoreList !== null) {
+    scoreList = storedScoreList;
   }
 }
 

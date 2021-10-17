@@ -1,6 +1,6 @@
 # code-quiz
 
-link to the deployed app:
+link to the deployed app: https://jitasek.github.io/code-quiz/
 
 This app is a timed coding quiz with multiple-choice questions. It runs in the browser and features dynamically updated HTML and CSS powered by JavaScript. It has a clean, polished, and responsive user interface.
 
