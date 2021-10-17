@@ -13,6 +13,7 @@ var userInitials = document.querySelector("#initials");
 var highScoresEl = document.querySelector("#highscores");
 var scoreListEl = document.querySelector("#score-list");
 var scoreList = []; // array of scores
+//var count = 15;
 
 // Buttons:
 var viewScoresBtn = document.querySelector("#view-highscores");
@@ -72,6 +73,7 @@ startCountDown = function () {
       timerEl.textContent = "Time: 0"; // reset the timer element
       quizEl.getElementsByClassName.display = "none"; // questions section disappears
       endEl.style.display = "block";
+      // scoreEl.textContent = countDown; // or count?
     }
   }, 1000);
 };
@@ -112,6 +114,8 @@ optionBtn.forEach((item) => {
   item.addEventListener("click", checkAnswer);
 });
 
+submitBtn.addEventListener("click", addScore);
+
 // Function: Check the answers
 
 function checkAnswer(event) {
@@ -131,7 +135,7 @@ function checkAnswer(event) {
   if (questions[questionCount].correctAnswer === event.target.value) {
     p.textContent = "Correct!";
   } else if (questions[questionCount].correctAnswer !== event.target.value) {
-    countDown = countDown - 2;
+    count = countDown - 2;
     p.textContent = "Wrong!";
   }
 
@@ -142,3 +146,76 @@ function checkAnswer(event) {
 
   showQuestion(questionCount);
 }
+
+// Function: storing scores locally, sorting them
+
+function addScore(event) {
+  event.preventDefault();
+  endEl.style.display = "none";
+  highScoresEl.style.display = "block";
+
+  var init = userInitials.value.toUpperCase();
+  scoreList.push({ initials: init, score: countDown });
+
+  scoreList = scoreList.sort((a, b) => {
+    if (a.score < b.score) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  scoreListEl.innerHTML = "";
+  for (var i = 0; i < scoreList.length; i++) {
+    var li = document.createElement("li");
+    li.textContent = scoreList[i].initials + ": " + scoreList[i].score;
+    scoreListEl.append(li);
+  }
+
+  storeScores();
+  displayScores();
+}
+
+//
+
+function storeScores() {
+  localStorage.setItem("scoreList", JSON.stringify(scoreList));
+}
+
+// Function: retrieving stored scores from localStorage
+function displayScores() {
+  var storedScoredList = JSON.parse(localStorage.getItem("scoreList"));
+
+  if (storedScoredList !== null) {
+    scoreListEl = storedScoredList;
+  }
+}
+
+// Function: Clear the scores
+function clearScores() {
+  localStorage.clear();
+  scoreEl.innerHTML = "";
+}
+
+// Go Back
+goBackBtn.addEventListener("click", function () {
+  highScoresEl.style.display = "none";
+  startEl.style.display = "block";
+  count = 15;
+  timerEl.textContent = "Time: " + count;
+});
+
+// Clear scores
+clearScoresBtn.addEventListener("click", clearScores);
+
+// Function: View high scores
+viewScoresBtn.addEventListener("click", function () {
+  startEl.style.display = "none";
+  if (highScoresEl.style.display === "none") {
+    highScoresEl.style.display = "block";
+  } else if (highScoresEl.style.display === "block") {
+    highScoresEl.style.display = "none";
+  } else {
+    return alert("No scores to show.");
+  }
+});
